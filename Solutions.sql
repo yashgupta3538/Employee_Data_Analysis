@@ -62,7 +62,7 @@ WHERE
     ROWNUM = 1;
     
 /*3rd Question
--Name the employees, manager, designation, 
+-Name the employees, designation, 
 department, country and their DOB who either shares the same month or same
 year in their DOB.*/
 Select distinct e1.name Employee_name,
@@ -85,27 +85,6 @@ and   com_dep_tb.department_id=departments_tb.department_id
 and   com_dep_tb.country_id=country_tb.country_id;
 
 /*4th Question
-Business has declared that a bonus to be given to all the employees 
-according to the below mentioned rules.
-? If manager with grade M+ and of age > 35 then 20% of salary and 20% of total allowances.
-? If manager then 30% of salary and 20% of total allowances.
-? If age > 30 and salary > 3500 then 35% of salary.
-? Everybody will get 100% of salary.*/
-( SELECT
-    grade_tb.name
-FROM
-    grade_tb,
-    employee_tb,
-    manager_facility_tb
-WHERE
-    employee_tb.manager_id = manager_facility_tb.manager_id
-    AND manager_facility_tb.grade_id = grade_tb.grade_id
-) gds
-(select sum(allowances) from facility_tb,employee_tb,manager_facility_tb 
-where employee_tb.manager_id=manager_facility_tb.manager_id
-and manager_facility_tb.facility_id=facility_tb.facility_id GROUP BY ALLOWANCES)allowa
-
-/*5th Question
 Name the employee, designation, grade, country and manager
 who have the second best salary in the database.*/
 SELECT
@@ -151,9 +130,9 @@ FROM
 WHERE
     sub.manager_id = employee_tb.employee_id;
 
-/*6th Question
+/*5th Question
 Name the employee/s,mail,age,department,designation, 
-grade,country and manager who have two ‘e’ or two ‘y’ in their name.*/
+grade,country and manager who have two â€˜eâ€™ or two â€˜yâ€™ in their name.*/
 SELECT
     sub.*,
     employee_tb.name manager
@@ -185,7 +164,7 @@ FROM
 WHERE
     sub.manager_id = employee_tb.employee_id;
     
-/*7th Question
+/*6th Question
 Name the employees with their salary, department,country, managers 
 and total allowances given to them who have mail account in Hotmail.*/
 SELECT
@@ -227,7 +206,7 @@ GROUP BY
     sub.country,
     employee_tb.name;
 
-/*8th Question
+/*7th Question
 Name the company/s which has any particular department in all countries.*/
 SELECT
     sub.company_name
